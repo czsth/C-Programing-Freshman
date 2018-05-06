@@ -1,3 +1,9 @@
+/*
+*简述：
+*  本程序是个游戏，扔俩色子得到两色子数字的和，如果该数字第一轮数字使isFirstRoundLose()
+*  不为零，则输；如果使isFirstRoundWin()不为零，则赢；否则继续。直到本轮所得到的数字与
+*  上一轮相同，则赢；或使得到 DIE(此处是7)，则输。
+*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -13,10 +19,10 @@ void printInfo(int roundCounter, int diceA, int diceB, int winNum);
 int main(int argc, char const *argv[]) {
 	srand(time(NULL));  //random seed initialize
 	enum State { WIN, LOSE, CONTINUE } state = CONTINUE;
-	int winNum = 0, currNum = 0;
+	int winNum = 0, currNum = 0;	//win number is the target number
 	int isFirstRound = 1;
 	int isExit = 0;		//if the game will exit this round
-	int roundCounter = 1;
+	int roundCounter = 1;	//the number of current round
 	int diceA, diceB;
 
 	//game start
@@ -50,12 +56,12 @@ int main(int argc, char const *argv[]) {
 		switch (state) {
 		case WIN:
 			printf("         Congratulations!\n\n");
-				isExit = 1;
+				isExit = 1;		//set exit flag
 				break;
 
 		case LOSE:
 			printf("          Oh! Bad luck.\n\n");
-			isExit = 1;
+			isExit = 1;		//set exit flag
 			break;
 
 		case CONTINUE:
@@ -65,6 +71,7 @@ int main(int argc, char const *argv[]) {
 			break;
 		}
 
+		//exit if exit flag set(LOSE or WIN)
 		if (isExit) {
 			break;
 		}
@@ -84,14 +91,14 @@ void printWelcome() {
 }
 
 inline int isFirstRoundWin(int total) {
-	if (total == 7 || total == 11) {
+	if (total == 7 || total == 11) {	//these are given numbers
 		return 1;
 	}
 	return 0;
 }
 
 inline int isFirstRoundLose(int total) {
-	if (total == 2 || total == 3 || total == 12) {
+	if (total == 2 || total == 3 || total == 12) {		//these are given numbers
 		return 1;
 	}
 	return 0;
