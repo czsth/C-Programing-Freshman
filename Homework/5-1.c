@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define ODIE 7    //die number in other rounds
+#define DIE 7    //die number in other rounds(not in first round)
 
 int roll(int *a, int *b);		//roll the dices
 void printWelcome();
@@ -39,7 +39,7 @@ int main(int argc, char const *argv[]) {
 			if (currNum == winNum) {
 				state = WIN;
 			}
-			else if (currNum == ODIE) {
+			else if (currNum == DIE) {
 				state = LOSE;
 			}
 		}
