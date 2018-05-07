@@ -56,8 +56,8 @@ int main(int argc, char const *argv[]) {
 		switch (state) {
 		case WIN:
 			printf("         Congratulations!\n\n");
-				isExit = 1;		//set exit flag
-				break;
+			isExit = 1;		//set exit flag
+			break;
 
 		case LOSE:
 			printf("          Oh! Bad luck.\n\n");
